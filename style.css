@@ -120,7 +120,7 @@ main {
 }
 
 pre {
-    background-color: #333;
+    background-color: grey;
     color: #eee;
     padding: 10px;
     border-radius: 5px;
@@ -128,7 +128,7 @@ pre {
 }
 
 footer {
-    background-color: #333;
+    background-color: grey;
     color: white;
     padding: 20px;
     text-align: center;
