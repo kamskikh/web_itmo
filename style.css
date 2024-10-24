@@ -61,10 +61,8 @@ nav ul li a {
 }
 
 main {
-    padding: 20px;
     text-align: center;
     background-color: white;
-    margin: 20px;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
