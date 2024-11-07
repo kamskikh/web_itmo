@@ -37,7 +37,7 @@ a {
     color: rgba(0, 0, 0, 1);
     font-style: normal;
     font-weight: 500;
-    font-size: 0.9375rem;
+    font-size: 0.9rem;
     padding: 10px 10px;
 }
 
@@ -63,7 +63,6 @@ nav ul li a {
 main {
     text-align: center;
     background-color: white;
-    border-radius: 5px;
 }
 
 .images {
@@ -165,3 +164,35 @@ strong {
 sup, sub {
     font-size: smaller;
 }
+
+
+.table {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+}
+
+.table-header {
+    font-weight: bold;
+    background-color: #ccc;
+    padding: 10px;
+}
+
+.table-row {
+    background-color: #f9f9f9;
+    padding: 10px;
+}
+
+.table-row:nth-child(odd) {
+    background-color: #eaeaea;
+}
+
+/* @media screen and (max-width: 768px) {
+    .table {
+        grid-template-columns: 1fr;
+    }
+} */
+
