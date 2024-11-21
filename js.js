@@ -23,10 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
 	const links = document.querySelectorAll('.navbar__link');
-	const currentURL = window.location.pathname;
+	const currentURL = window.location.href;
 
 	links.forEach(link => {
-		const linkHref = link.getAttribute('href').replace(/^\.+/, ''); // Убираем "./"
+		const linkHref = new URL(link.href).href // Убираем "./"
 
 		console.log(linkHref, currentURL); // Проверяем, что сравниваются корректные значения
 
