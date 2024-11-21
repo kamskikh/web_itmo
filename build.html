@@ -45,73 +45,53 @@
     </header>
 
     <main>
-        <section id="gpu-table"  style="padding: 20px 0;">
-            <h2>Таблица видеокарт</h2>
-            <table class="gpu-table">
-				<thead>
-					<tr>
-						<th>Модель</th>
-						<th>Память</th>
-						<th>Частота</th>
-						<th>Цена</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>NVIDIA RTX 4060</td>
-						<td>8GB</td>
-						<td>1800 MHz</td>
-						<td>30000 ₽</td>
-					</tr>
-					<tr>
-						<td>NVIDIA RTX 4070</td>
-						<td>12GB</td>
-						<td>1900 MHz</td>
-						<td>50000 ₽</td>
-					</tr>
-					<tr>
-						<td>NVIDIA RTX 4080</td>
-						<td>16GB</td>
-						<td>2200 MHz</td>
-						<td>80000 ₽</td>
-					</tr>
-					<tr>
-						<td>NVIDIA RTX 4090</td>
-						<td>24GB</td>
-						<td>2500 MHz</td>
-						<td>120000 ₽</td>
-					</tr>
-					<tr>
-						<td>AMD RX 6700 XT</td>
-						<td>12GB</td>
-						<td>2300 MHz</td>
-						<td>45000 ₽</td>
-					</tr>
-					<tr>
-						<td>AMD RX 6800 XT</td>
-						<td>16GB</td>
-						<td>2250 MHz</td>
-						<td>60000 ₽</td>
-					</tr>
-					<tr>
-						<td>AMD RX 6900 XT</td>
-						<td>16GB</td>
-						<td>2500 MHz</td>
-						<td>75000 ₽</td>
-					</tr>
-					<tr>
-						<td>AMD RX 7900 XTX</td>
-						<td>24GB</td>
-						<td>2500 MHz</td>
-						<td>100000 ₽</td>
-					</tr>
-				</tbody>
-			</table>
-        </section>
-        
-        
-    </main>
-
+		<section class="build-form">
+			<h2>Соберите свой ПК</h2>
+			<form id="buildForm">
+				<label for="cpu">Процессор:</label>
+				<select id="cpu" name="cpu">
+					<option value="" disabled selected>Выберите процессор</option>
+					<option value="Intel Core i5-12400:15000">Intel Core i5-12400 (15,000 ₽)</option>
+					<option value="Intel Core i7-12700:25000">Intel Core i7-12700 (25,000 ₽)</option>
+					<option value="AMD Ryzen 5 5600X:20000">AMD Ryzen 5 5600X (20,000 ₽)</option>
+					<option value="AMD Ryzen 7 5800X:30000">AMD Ryzen 7 5800X (30,000 ₽)</option>
+				</select>
+	
+				<label for="gpu">Видеокарта:</label>
+				<select id="gpu" name="gpu">
+					<option value="" disabled selected>Выберите видеокарту</option>
+					<option value="NVIDIA RTX 4060:30000">NVIDIA RTX 4060 (30,000 ₽)</option>
+					<option value="NVIDIA RTX 4070:50000">NVIDIA RTX 4070 (50,000 ₽)</option>
+					<option value="AMD RX 6700 XT:45000">AMD RX 6700 XT (45,000 ₽)</option>
+					<option value="AMD RX 7900 XTX:100000">AMD RX 7900 XTX (100,000 ₽)</option>
+				</select>
+	
+				<label for="mb">Материнская плата:</label>
+				<select id="mb" name="mb">
+					<option value="" disabled selected>Выберите материнскую плату</option>
+					<option value="MSI B550M PRO-VDH:8000">MSI B550M PRO-VDH (8,000 ₽)</option>
+					<option value="ASUS ROG STRIX B550-F:15000">ASUS ROG STRIX B550-F (15,000 ₽)</option>
+					<option value="Gigabyte Z690 Aorus Elite:20000">Gigabyte Z690 Aorus Elite (20,000 ₽)</option>
+				</select>
+	
+				<label for="psu">Блок питания:</label>
+				<select id="psu" name="psu">
+					<option value="" disabled selected>Выберите блок питания</option>
+					<option value="Corsair RM650:7000">Corsair RM650 (7,000 ₽)</option>
+					<option value="Cooler Master MWE 750:8000">Cooler Master MWE 750 (8,000 ₽)</option>
+					<option value="Seasonic Focus GX-850:10000">Seasonic Focus GX-850 (10,000 ₽)</option>
+				</select>
+	
+				<button type="button" id="submitBuild">Собрать</button>
+			</form>
+		</section>
+	
+		<section class="build-results">
+			<h2>Ваши сборки</h2>
+			<div id="buildCards" class="build-cards"></div>
+		</section>
+	</main>
+	
     <footer>
         <h4>Контакты:</h4>
         <p>г. Санкт-Петербург</p>
