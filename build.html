@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
     <title>Комплектующие для ПК</title>
     <meta name="description" content="Продажа и доставка компьютерных комплектующих по всей России. Видеокарты, процессоры, материнские платы и многое другое.">
     <meta name="keywords" content="компьютерные комплектующие, видеокарты, процессоры, доставка, системы охлаждения">
@@ -27,12 +28,12 @@
             <div class="navbar__linkmenu">
     
               <div class="navbar__menu">
-                <a href="crads.html" class="navbar__link">Видеокарты</a>
+                <a href="/crads.html" class="navbar__link">Видеокарты</a>
                 <a href="#mb" class="navbar__link">Материнские платы</a>
                 <a href="#cpu" class="navbar__link">Процессоры</a>
                 <a href="#cooling" class="navbar__link">Охлаждение</a>
                 <a href="#power" class="navbar__link">Питание</a>
-                <a href="build.html" class="navbar__link">Сборка</a>
+                <a href="/build.html" class="navbar__link">Сборка</a>
               </div>
 			  <button class="menu-button">Menu</button>
     
@@ -89,7 +90,25 @@
 		<section class="build-results">
 			<h2>Ваши сборки</h2>
 			<div id="buildCards" class="build-cards"></div>
+			<!-- Шаблон карточки сборки -->
+			<template id="buildCardTemplate">
+				<div class="build-card">
+					<h3 class="build-card-title">Сборка {id}</h3>
+					<p class="build-card-cpu">Процессор: {cpu}</p>
+					<p class="build-card-gpu">Видеокарта: {gpu}</p>
+					<p class="build-card-mb">Материнская плата: {mb}</p>
+					<p class="build-card-psu">Блок питания: {psu}</p>
+					<p class="build-card-price"><strong>Примерная цена:</strong> {totalPrice} ₽</p>
+					<button class="delete-button" data-id="{id}">Удалить</button>
+				</div>
+			</template>
 		</section>
+
+		<aside class="comments-section">
+			<h2>Отзывы</h2>
+			<div id="preloader">Загрузка...</div>
+			<div id="comments"></div>
+		</aside>
 	</main>
 	
     <footer>
