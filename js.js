@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const currentURL = window.location.pathname;
 
 	links.forEach(link => {
-		const linkHref = link.getAttribute('href').replace(/^\.+/, ''); // Убираем "./"
+		const linkHref = new URL(link.href).pathname; // Убираем "./"
 
 		console.log(linkHref, currentURL); // Проверяем, что сравниваются корректные значения
 
