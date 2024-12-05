@@ -26,12 +26,12 @@
             <div class="navbar__linkmenu">
     
               <div class="navbar__menu">
-                <a href="crads.html" class="navbar__link">Видеокарты</a>
-                <a href="motherboard.html" class="navbar__link">Материнские платы</a>
+                <a href="/crads.html" class="navbar__link">Видеокарты</a>
+                <a href="/motherboard.html" class="navbar__link">Материнские платы</a>
                 <a href="#cpu" class="navbar__link">Процессоры</a>
                 <a href="#cooling" class="navbar__link">Охлаждение</a>
                 <a href="#power" class="navbar__link">Питание</a>
-                <a href="build.html" class="navbar__link">Сборка</a>
+                <a href="/build.html" class="navbar__link">Сборка</a>
               </div>
 				<button class="menu-button">Menu</button>
 
@@ -46,17 +46,26 @@
     </header>
 
     <main>
+		<!-- Секция с изображением распродажи -->
         <section class="images">
+			<!--<h2 class="section-title">Распродажа</h2>-->
             <img class="sale__image" src="img/main/sale2.png">
         </section>
+
+		<!-- Секция с видеокартами -->
         <section class="gpus">
-            <img class="gpus__image" src="img/main/4060.jpg">
-            <img class="gpus__image" src="img/main/4070.jpg">
-            <img class="gpus__image" src="img/main/4070.jpg">
+			<h2 class="section-title">Наши видеокарты</h2>
+			<div class="gpu-gallery">
+				<img class="gpus__image" src="img/main/4060.jpg" alt="NVIDIA RTX 4060">
+				<img class="gpus__image" src="img/main/4070.jpg" alt="NVIDIA RTX 4070">
+				<img class="gpus__image" src="img/main/4070.jpg" alt="NVIDIA RTX 4070">
+			</div>
         </section>
+
+		<!-- Секция "Почему мы?" -->
         <section>
+			<h2 class="section-title">Почему выбирают нас?</h2>
             <article>
-                <h2>Почему мы?</h2>
                 <ul>
                     <li><strong>Гарантируем высокое качество</strong>. Мы работаем только с проверенными поставщиками.</li>
                     <li><strong>Широкий ассортимент</strong>. У нас есть все от видеокарт до блоков питания.</li>
@@ -66,6 +75,8 @@
                     <li><strong>Быстрая доставка</strong>. Мы работаем с надежными курьерскими службами.</li>
                 </ul>
             </article>
+		</section>
+
 
             <pre>
    _______  _     _  _______  _______  ______    _______
@@ -77,7 +88,9 @@
   |_______||__| |__||_______||_______||___|  |_||_______|
             </pre>
 
-            <h3>Наша формула успеха:</h3>
+		<section>
+			<h3 class="section-title-h3">Наша формула успеха</h3>
+            <!-- <h3>Наша формула успеха:</h3> -->
             <p>Мы верим в простую формулу: <em>успех</em> = <i>качество</i> + <i>доступность</i><sup>2</sup> + <sub>клиентская поддержка</sub>.</p>
         </section>
     </main>
