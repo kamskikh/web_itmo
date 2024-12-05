@@ -23,10 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
 	const links = document.querySelectorAll('.navbar__link');
-	const currentURL = window.location.href;
+	const currentURL = window.location.pathname;
 
 	links.forEach(link => {
-		const linkHref = new URL(link.href).href // Убираем "./"
+		const linkHref = link.getAttribute('href').replace(/^\.+/, ''); // Убираем "./"
 
 		console.log(linkHref, currentURL); // Проверяем, что сравниваются корректные значения
 
@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const buildForm = document.getElementById('buildForm');
     const buildCards = document.getElementById('buildCards');
     const submitBuild = document.getElementById('submitBuild');
+    const buildCardTemplate = document.getElementById('buildCardTemplate').content;
 
 
 	
@@ -54,7 +55,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Загрузка данных из localStorage при загрузке страницы
     let savedBuilds = JSON.parse(localStorage.getItem('builds')) || [];
-    let buildId = savedBuilds.length;
+    
+	// Определение максимального buildId из сохранённых данных
+    let buildId = savedBuilds.length > 0 
+        ? Math.max(...savedBuilds.map(build => parseInt(build.id.replace('Сборка ', ''), 10))) 
+        : 0;
 
     // Функция для отображения сохранённых сборок
     const renderSavedBuilds = () => {
@@ -66,18 +71,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Функция для создания карточки сборки
     const createBuildCard = (build) => {
-        const card = document.createElement('div');
-        card.className = 'build-card';
-        card.innerHTML = `
-            <h3>${build.id}</h3>
-            <p>Процессор: ${build.cpu}</p>
-            <p>Видеокарта: ${build.gpu}</p>
-            <p>Материнская плата: ${build.mb}</p>
-            <p>Блок питания: ${build.psu}</p>
-            <p><strong>Примерная цена:</strong> ${build.totalPrice} ₽</p>
-            <!--<button class="edit-button" data-id="${build.id}">Редактировать</button> -->
-            <button class="delete-button" data-id="${build.id}">Удалить</button>
-        `;
+        const card = buildCardTemplate.cloneNode(true);
+
+        card.querySelector('.build-card-title').textContent = `${build.id}`;
+        card.querySelector('.build-card-cpu').textContent = `Процессор: ${build.cpu}`;
+        card.querySelector('.build-card-gpu').textContent = `Видеокарта: ${build.gpu}`;
+        card.querySelector('.build-card-mb').textContent = `Материнская плата: ${build.mb}`;
+        card.querySelector('.build-card-psu').textContent = `Блок питания: ${build.psu}`;
+        card.querySelector('.build-card-price').innerHTML = `<strong>Примерная цена:</strong> ${build.totalPrice} ₽`;
+        card.querySelector('.delete-button').setAttribute('data-id', build.id);
+
         buildCards.appendChild(card);
     };
 
@@ -115,30 +118,16 @@ document.addEventListener('DOMContentLoaded', () => {
     submitBuild.addEventListener('click', () => {
 	
 		if (!cpu.value || !gpu.value || !mb.value || !psu.value) {
-			alert('Пожалуйста, выберите все комплектующие.');
-			console.log(1);
-			if (!cpu.value) {
-				cpu.style.borderColor = 'red';
-			}
-			console.log(1);
-			
-			if (!gpu.value) {
-				gpu.style.borderColor = 'red';
-			}
-			console.log(!gpu.value);
-			
-			if (!mb.value) {
-				mb.style.borderColor = 'red';
-			}
-			console.log(1);
-			
-			if (!psu.value) {
-				psu.style.borderColor = 'red';
-			}
-			console.log(1);
-
-			return;
-		}
+            alert('Пожалуйста, выберите все комплектующие.');
+            [cpu, gpu, mb, psu].forEach((element) => {
+                if (!element.value) {
+                    element.style.borderColor = 'red';
+                } else {
+                    element.style.borderColor = '';
+                }
+            });
+            return;
+        }
 	
 
 		// Если все поля заполнены, сбрасываем рамки
@@ -211,3 +200,48 @@ document.addEventListener('DOMContentLoaded', () => {
 		footer.appendChild(statsDiv);
 	});
 })();
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const commentsContainer = document.getElementById('comments');
+    const preloader = document.getElementById('preloader');
+
+    const fetchComments = () => {
+        // Генерируем случайное число для выбора URL
+        const randomValue = Math.random();
+        const randomValue2 = Math.floor(Math.random() * 450);
+        const url = randomValue < 0.5 
+            ? `https://jsonplaceholder.typicode.com/comments?id_gte=${randomValue2}&_limit=10` 
+            : `https://jsonplaceholder.typicode.com/comments?id_lte=${randomValue2}&_limit=10`;
+
+        fetch(url)
+            .then(respпonse => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(comments => {
+                renderComments(comments);
+            })
+            .catch(error => {
+                commentsContainer.innerHTML = '<p>⚠ Что-то пошло не так</p>';
+            })
+            .finally(() => {
+                preloader.style.display = 'none';
+            });
+    };
+
+    const renderComments = (comments) => {
+        commentsContainer.innerHTML = comments.map(comment => `
+            <div class="comment">
+                <div class="comment-title">${comment.name}</div>
+                <div class="comment-body">${comment.body}</div>
+                <div class="comment-email">${comment.email}</div>
+            </div>
+        `).join('');
+    };
+
+    fetchComments();
+});
