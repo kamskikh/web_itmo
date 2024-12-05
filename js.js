@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
             : `https://jsonplaceholder.typicode.com/comments?id_lte=${randomValue2}&_limit=10`;
 
         fetch(url)
-            .then(respпonse => {
+            .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
