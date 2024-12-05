@@ -199,7 +199,6 @@ sup, sub {
     width: 100%;
     max-width: 800px;
     margin: auto;
-    padding: 10px;
 }
 
 .table-header {
@@ -357,3 +356,84 @@ tr:nth-child(odd) td {
     border-radius: 5px;
     background-color: #f9f9f9;
 }
+
+
+
+
+
+
+
+
+
+
+.gpu-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.section-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+
+.section-title-h3 {
+    font-size: 1.3rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .comments-section {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    position: fixed;
+    right: 20px;
+    top: 100px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.comment {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.comment-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.comment-body {
+    margin-bottom: 5px;
+}
+
+.comment-email {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+#preloader {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2rem;
+    color: #007BFF;
+} */
